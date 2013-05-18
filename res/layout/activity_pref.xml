@@ -1,0 +1,133 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity" >
+
+    <TextView
+        android:id="@+id/CitySelTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:text="@string/CitySelTitle"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/CitySel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/CitySelTitle"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@id/CitySelTitle"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:text=""
+        android:textSize="18sp"
+        android:textStyle="italic" />
+
+    <Button
+        android:id="@+id/SearchBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="@string/SelBtn"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/DurationTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/CitySelTitle"
+        android:layout_marginTop="10dp"
+        android:text="@string/duration"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/DurationEdit"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/DurationTitle"
+        android:layout_below="@id/CitySelTitle"
+        android:layout_toRightOf="@id/DurationTitle"
+        android:hint="@string/durationhint"
+        android:inputType="numberSigned"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:singleLine="true"
+        android:textSize="16sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/DurationEdit"
+        android:layout_toRightOf="@id/DurationEdit"
+        android:paddingLeft="20dp"
+        android:text="@string/durationlen"
+        android:textSize="18sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:id="@+id/PreferTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/DurationTitle"
+        android:layout_marginTop="10dp"
+        android:text="@string/prefer"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+    <CheckBox 
+        android:id="@+id/rqspot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/rqspot"
+        android:layout_below="@id/PreferTitle"
+        android:layout_marginLeft="30dp"
+        />
+	<CheckBox 
+        android:id="@+id/htspot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/htspot"
+        android:layout_below="@id/rqspot"
+        android:layout_alignLeft="@id/rqspot"
+        />
+	<CheckBox 
+        android:id="@+id/lpspot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lpspot"
+        android:layout_below="@id/htspot"
+        android:layout_alignLeft="@id/rqspot"
+        />
+	<CheckBox 
+        android:id="@+id/hsspot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hsspot"
+        android:layout_below="@id/lpspot"
+        android:layout_alignLeft="@id/rqspot"
+        />
+	<CheckBox 
+        android:id="@+id/znspot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/znspot"
+        android:layout_below="@id/hsspot"
+        android:layout_alignLeft="@id/rqspot"
+        />
+	<ImageButton 
+	    android:id="@+id/gotbtn"
+	    android:background="@null"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/znspot"
+        android:src="@drawable/gotbtn"
+	    />
+</RelativeLayout>
