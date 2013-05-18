@@ -1,6 +1,8 @@
 package com.example.pguide;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -10,6 +12,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.apache.http.util.EncodingUtils;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -152,7 +156,7 @@ public class UserSelActivity extends Activity {
 				// TODO Auto-generated method stub
 				
 				String Trans = "C;";
-				
+				Trans += readFileData("Days");
 				if ( accnt < 2 )
 				{
 					MakeToast("再多选点呗");
@@ -246,6 +250,31 @@ public class UserSelActivity extends Activity {
 		}
 
 		return list;
+	}
+	public void writeFileData(String fileName, String message) {
+		try {
+			FileOutputStream fout = openFileOutput(fileName, MODE_PRIVATE);
+			byte[] bytes = message.getBytes();
+			fout.write(bytes);
+			fout.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public String readFileData(String fileName) {
+		String res = "";
+		try {
+			FileInputStream fin = openFileInput(fileName);
+			int length = fin.available();
+			byte[] buffer = new byte[length];
+			fin.read(buffer);
+			res = EncodingUtils.getString(buffer, "UTF-8");
+			fin.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return res;
 	}
 
 }
