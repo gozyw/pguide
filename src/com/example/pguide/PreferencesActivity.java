@@ -29,7 +29,6 @@ import android.widget.Toast;
 public class PreferencesActivity extends Activity {
 	// private TextView tv;
 	private TextView CitySel;
-	private Button SearchBtn;
 	private ImageButton GotBtn;
 	private EditText DurationEdit;
 	private CheckBox rq, ht,lp, hs;
@@ -66,7 +65,6 @@ public class PreferencesActivity extends Activity {
 		setContentView(R.layout.activity_pref);
 		
 		CitySel = (TextView) findViewById(R.id.CitySel);
-		SearchBtn = (Button) findViewById(R.id.SearchBtn);
 		GotBtn = (ImageButton) findViewById(R.id.gotbtn);
 		DurationEdit = (EditText) findViewById(R.id.DurationEdit);
 		rq = (CheckBox)findViewById(R.id.rqspot);
@@ -135,7 +133,7 @@ public class PreferencesActivity extends Activity {
 
 		});
 
-		SearchBtn.setOnClickListener(new OnClickListener() {
+		CitySel.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View arg0) {

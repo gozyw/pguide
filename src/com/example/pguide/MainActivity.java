@@ -206,7 +206,7 @@ public class MainActivity extends Activity {
 			case 1:
 				// Log.d("fjalejfleafeafeafea", Wstr);
 				Log.d("STRINGW", Wstr);
-				writeFileData("Weather", Wstr);
+				writeFileData("Weather", AnalysisWeather(Wstr));
 				Log.d("STRINGW", AnalysisWeather(Wstr));
 				break;
 			}
@@ -229,7 +229,7 @@ public class MainActivity extends Activity {
 			st++;
 		}
 		
-		res += " " + nowtemp + " C ";
+		res += " " + nowtemp + "¡ãC";
 		st += 2;
 		
 		int daycode = 0;
@@ -238,7 +238,7 @@ public class MainActivity extends Activity {
 			st++;
 		}
 		st ++;
-		res += WetCodeTrans(daycode);
+		//res += WetCodeTrans(daycode);
 		
 		int daylow = 0;
 		while (str.charAt(st) >= '0' && str.charAt(st) <= '9') {
@@ -246,14 +246,14 @@ public class MainActivity extends Activity {
 			st++;
 		}
 		st ++;
-		res += " Low: " + daylow;
+		res += "(" + daylow+"¡ãC ~ ";
 		int dayhigh = 0;
 		while (st < len) {
 			dayhigh = dayhigh * 10 + str.charAt(st) - '0';
 			st++;
 		}
 		
-		res += " High: " + dayhigh;
+		res += dayhigh+"¡ãC)";
 		return res;
 	}
 

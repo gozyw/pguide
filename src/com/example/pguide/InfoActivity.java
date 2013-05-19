@@ -1,9 +1,12 @@
 package com.example.pguide;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+
+import org.apache.http.util.EncodingUtils;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,12 +16,17 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
+import android.widget.ImageView;
 import android.widget.RatingBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class InfoActivity<Progressdialog> extends Activity {
 	private ProgressDialog progressdialog;
 	private RatingBar ratingbar;
+	private ImageView imageView1;
+	
+	private TextView spotname, tickp, weather, indoc;
 
 	private String serverip;
 	private int serverport;
@@ -32,18 +40,78 @@ public class InfoActivity<Progressdialog> extends Activity {
 				break;
 			case 1:
 				progressdialog.dismiss();	
-				MakeToast(gres);
-
+				//MakeToast(gres);
+				Log.d("detail",gres);
+				String str[] = gao(gres + "&");
+				
+				spotname.setText(Cname[Integer.valueOf(str[0]) - 1]);
+				weather.setText(readFileData("Weather"));
+				Query((int)(Integer.valueOf(str[0]) - 1));
+				indoc.setText(str[8]);
+				
+				Double da = Double.valueOf(str[5]);
+				Double db = Double.valueOf(str[6]);
+				ratingbar.setRating((float)(da/db));
+				
+				tickp.setText("门票:    " + str[4]+"元");
+				
 				break;
 			default:
 				break;
 			}
 		}
 	};
+	
+	private void Query(int code) {
+		switch (code) {
+		case 0:
+			imageView1.setImageResource(R.drawable.a0);break;
+		case 1:
+			imageView1.setImageResource(R.drawable.a1);break;
+		case 2:
+			imageView1.setImageResource(R.drawable.a2);break;
+		case 3:
+			imageView1.setImageResource(R.drawable.a3);break;
+		case 4:
+			imageView1.setImageResource(R.drawable.a4);break;
+		case 5:
+			imageView1.setImageResource(R.drawable.a5);break;
+		case 6:
+			imageView1.setImageResource(R.drawable.a6);break;
+		case 7:
+			imageView1.setImageResource(R.drawable.a7);break;
+		case 8:
+			imageView1.setImageResource(R.drawable.a8);break;
+		case 9:
+			imageView1.setImageResource(R.drawable.a0);break;
+		default:
+			imageView1.setImageResource(R.drawable.a0);
+		}
+	}
+	private String[] gao(String str)
+	{
+		String res[] = new String[9];
+		for ( int i = 0; i<9;i++ )
+		{
+			int ats = str.indexOf('&');
+			res[i] = str.substring(0, ats);
+			str = str.substring(ats + 1, str.length());
+			//Log.d("detailz",res[i]+"," +str);
+		}
+		return res;
+	}
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_info);
+		
+		spotname = (TextView)findViewById(R.id.spotname);
+		tickp = (TextView)findViewById(R.id.tickp);
+		weather = (TextView)findViewById(R.id.weather);
+		indoc = (TextView)findViewById(R.id.indoc);
+		imageView1 = (ImageView)findViewById(R.id.imageView1);
 		ratingbar = (RatingBar) findViewById(R.id.ratingbar);
 
 		serverip = getString(R.string.IP);
@@ -100,14 +168,27 @@ public class InfoActivity<Progressdialog> extends Activity {
 	}
 	
 	
-	
+	public String readFileData(String fileName) {
+		String res = "";
+		try {
+			FileInputStream fin = openFileInput(fileName);
+			int length = fin.available();
+			byte[] buffer = new byte[length];
+			fin.read(buffer);
+			res = EncodingUtils.getString(buffer, "UTF-8");
+			fin.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return res;
+	}
 	
 	
 	
 	public String Cname[] = new String[] {
+			"故宫博物院",
 			"北京动物园",
 			"北京十三陵",
-			"水立方",
 			"八达岭长城",
 			"国家体育场",
 			"北京颐和园",
@@ -119,7 +200,6 @@ public class InfoActivity<Progressdialog> extends Activity {
 			39.9164,
 			39.9388,
 			40.2721,
-			39.9927,
 			40.3539,
 			39.9929,
 			39.9996,

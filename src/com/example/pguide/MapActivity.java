@@ -76,9 +76,9 @@ public class MapActivity extends FragmentActivity implements LocationListener, O
 	int nowroad;
 	ImageButton nextroad;
 	public String Cname[] = new String[] {
+			"故宫博物院",
 			"北京动物园",
 			"北京十三陵",
-			"水立方",
 			"八达岭长城",
 			"国家体育场",
 			"北京颐和园",
@@ -90,7 +90,6 @@ public class MapActivity extends FragmentActivity implements LocationListener, O
 			39.9164,
 			39.9388,
 			40.2721,
-			39.9927,
 			40.3539,
 			39.9929,
 			39.9996,

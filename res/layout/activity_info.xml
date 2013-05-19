@@ -1,4 +1,3 @@
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,22 +7,24 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".InfoActivity" >
-<TextView
+
+    <TextView
         android:id="@+id/spotname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="21dp"
-        android:layout_toRightOf="@+id/weap"
+        
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
         android:text="万里长城"
         android:textSize="13sp"
         android:textStyle="bold" />
+
     <RatingBar
         android:id="@+id/ratingbar"
         style="?android:attr/ratingBarStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@id/spotname"
+        android:layout_alignLeft="@id/spotname"
         android:layout_below="@+id/spotname"
         android:layout_marginTop="20dp" />
 
@@ -32,12 +33,53 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/ratingbar"
-        android:layout_marginLeft="10dp"
+        android:layout_alignLeft="@id/spotname"
         android:layout_marginRight="10dp"
         android:layout_marginTop="15dp"
         android:text="@string/longtex"
         android:textSize="10sp"
         android:textStyle="normal" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/indoc"
+        android:layout_alignTop="@+id/spotname"
+        android:layout_marginRight="31dp"
+        android:src="@drawable/greatwall" />
+
+    <TextView
+        android:id="@+id/weather"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/indoc"
+        android:layout_below="@+id/indoc"
+        
+        android:layout_marginTop="18dp"
+        
+        android:text="阴转多云"
+        android:textSize="11dp" />
+
+    <TextView
+        android:id="@+id/tickp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/weather"
+        android:layout_alignRight="@id/indoc"
+        android:ems="10"
+        android:text="门票:    45元"
+        android:textSize="11dp" />
+
+    <ImageView
+        android:id="@+id/h1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/indoc"
+        android:layout_below="@+id/weather"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="35dp"
+        android:src="@drawable/head" />
 
     <ImageView
         android:id="@+id/h2"
@@ -57,55 +99,13 @@
         android:layout_marginTop="33dp"
         android:src="@drawable/head" />
 
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/indoc"
-        android:layout_alignTop="@+id/spotname"
-        android:layout_marginRight="31dp"
-        android:src="@drawable/greatwall" />
-
-    <TextView
-        android:id="@+id/weather"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/indoc"
-        android:layout_marginTop="18dp"
-        android:layout_toLeftOf="@+id/imageView1"
-        android:ems="7"
-        android:textSize="11dp"
-        android:text="阴转多云" />
-
-    <TextView
-        android:id="@+id/weap"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/weather"
-        android:layout_alignBottom="@+id/weather"
-        android:layout_alignLeft="@+id/indoc"
-        android:layout_marginLeft="14dp"
-        android:text="天气:"
-        android:textSize="11dp" />
-
-    <TextView
-        android:id="@+id/tickp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/weather"
-        android:layout_alignBottom="@+id/weather"
-        android:layout_toRightOf="@+id/weather"
-        android:ems="10"
-        android:text="门票:    45元"
-        android:textSize="11dp" />
-
     <TextView
         android:id="@+id/pinglun1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/h2"
-        android:layout_alignRight="@+id/indoc"
-        android:layout_marginRight="15dp"
+        android:layout_alignBottom="@id/h1"
+        android:layout_marginLeft="30dp"
+        android:layout_toRightOf="@id/h1"
         android:ems="10"
         android:text="评论评论评论评论评论评论评论评论评" />
 
@@ -113,8 +113,9 @@
         android:id="@+id/pinglun2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/pinglun1"
-        android:layout_alignTop="@+id/h2"
+        android:layout_alignBottom="@id/h2"
+        android:layout_marginLeft="30dp"
+        android:layout_toRightOf="@id/h2"
         android:ems="10"
         android:text="评论评论评论评论评论评论评论评论评" />
 
@@ -122,18 +123,10 @@
         android:id="@+id/pinglun3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/h3"
-        android:layout_alignLeft="@+id/pinglun2"
+        android:layout_alignBottom="@id/h3"
+        android:layout_marginLeft="30dp"
+        android:layout_toRightOf="@id/h3"
         android:ems="10"
         android:text="评论评论评论评论评论评论评论评论评" />
-
-    <ImageView
-        android:id="@+id/h1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/ratingbar"
-        android:layout_below="@+id/weap"
-        android:layout_marginTop="35dp"
-        android:src="@drawable/head" />
 
 </RelativeLayout>
