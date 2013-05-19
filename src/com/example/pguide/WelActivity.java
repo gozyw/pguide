@@ -6,9 +6,14 @@ import java.io.FileOutputStream;
 import org.apache.http.util.EncodingUtils;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.view.Menu;
+import android.widget.TextView;
 
 public class WelActivity extends Activity {
 
@@ -17,10 +22,28 @@ public class WelActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_wel);
 		writeFileData("CityName", "");
+		PackageManager pm = getPackageManager();
+		try {
+		    PackageInfo pi = pm.getPackageInfo("com.lyt.android", 0);
+		} catch (NameNotFoundException e) {
+		    e.printStackTrace();
+		}
+
+		new Handler().postDelayed(new Runnable(){
+
+		@Override
+		public void run() {
+		    Intent intent = new Intent(WelActivity.this,PreferencesActivity.class);
+		    startActivity(intent);
+		    finish();
+		}
+
+		}, 2500);
+		/*
 		Intent intent = new Intent(WelActivity.this, PreferencesActivity.class);
 		//intent.putExtra("City", FinalCity[arg2]);
 		startActivity(intent);
-		finish();
+		finish();*/
 	}
 
 	@Override
