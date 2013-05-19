@@ -54,15 +54,17 @@ public class UserSelActivity extends Activity {
 			switch (msg.what) {
 			case 0:
 				progressdialog.dismiss();
-				// MakeToast("Get info failed");
+				MakeToast("Get info failed");
 				break;
 			case 1:
 				progressdialog.dismiss();
 				Intent intent = new Intent(UserSelActivity.this,
 						MapActivity.class);
 				intent.putExtra("spot", gres);
+				Log.d("intentresgresssss", gres);
 				startActivity(intent);
-				finish();
+				//finish();
+				
 				// /intent
 				// ~
 				// MakeToast(""+gres);
@@ -84,7 +86,9 @@ public class UserSelActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_usersel);
-
+		serverip = getString(R.string.IP);
+		serverport = new Integer(getString(R.string.PO));
+		
 		accnt = 0;
 		Arrays.fill(fck, false);
 
@@ -175,16 +179,23 @@ public class UserSelActivity extends Activity {
 					@Override
 					public void run() {
 						try {
+							Log.d("in?", "??");
 							Socket socket = new Socket(serverip, serverport);
+
+							Log.d("in?", "??");
 							PrintWriter writer = new PrintWriter(socket
 									.getOutputStream());
+							
 							writer.println(wrstring);
 							writer.flush();
+
 							BufferedReader reader = new BufferedReader(
 									new InputStreamReader(socket
 											.getInputStream()));
 							gres = reader.readLine();
-							Thread.sleep(1000);
+							Log.d("nininininini???", gres);
+							
+							//Thread.sleep(1000);
 							myHand.sendEmptyMessage(1);
 						} catch (Exception e) {
 							// Log.d("Excep", e.getMessage());

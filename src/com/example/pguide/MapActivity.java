@@ -67,12 +67,51 @@ public class MapActivity extends FragmentActivity implements LocationListener, O
 	List<List<LatLng>> inAT;
 	int nowch;
 	List<LatLng> latlngAll;
+	List<Integer> idAll;
 	List<LatLng>list;
 	List<LatLng>Glist;
 	List<Marker>marklist;
 	List< List<LatLng>> road;
+	List<List<Integer>> inid;
 	int nowroad;
 	ImageButton nextroad;
+	public String Cname[] = new String[] {
+			"北京动物园",
+			"北京十三陵",
+			"水立方",
+			"八达岭长城",
+			"国家体育场",
+			"北京颐和园",
+			"天坛公园",
+			"天安门广场",
+			"慕田峪长城"
+	};
+	public double Lat[] = new double[] {
+			39.9164,
+			39.9388,
+			40.2721,
+			39.9927,
+			40.3539,
+			39.9929,
+			39.9996,
+			39.8818,
+			39.9060,
+			40.4319,
+	
+	};
+	public double Lng[] = new double [] {
+			116.3971,
+			116.3402,
+			116.2248,
+			116.0178,
+			116.3965,
+			116.2739,
+			116.4091,
+			116.3976,
+			116.5583
+	};
+
+
 	private Handler mHandler = new Handler() {
 		public void handleMessage(Message msg) {
 			switch (msg.what) {						
@@ -85,7 +124,11 @@ public class MapActivity extends FragmentActivity implements LocationListener, O
 				marklist.clear();
 				
                 for(int i = 0; i < latlngAll.size(); i++) {
-                	addMaker(latlngAll.get(i).latitude, latlngAll.get(i).longitude, false);
+                	addMaker(latlngAll.get(i).latitude, latlngAll.get(i).longitude, Cname[idAll.get(i) - 1], false);
+                }
+                for(int i = 0; i < idAll.size(); i++) {
+                	Log.d("FINALDENIG", "" + idAll.get(i));
+                	
                 }
                 LatLng last = null;
 //                for (int i = 0; i < Glist.size() - 1; i++) {
@@ -144,12 +187,15 @@ public class MapActivity extends FragmentActivity implements LocationListener, O
 	public void init() {
 
 		latlngAll = new ArrayList<LatLng>();
+		idAll = new ArrayList<Integer> ();
+		
 		list = new ArrayList<LatLng>();
 		Glist = new ArrayList<LatLng>();
 		marklist = new ArrayList<Marker>();
 		
 		road = new ArrayList<List<LatLng>>();
 		inAT = new ArrayList<List<LatLng>>();
+		inid = new ArrayList<List<Integer>>();
 		
 		nowroad = 0;
 		nowch = 0;
@@ -182,10 +228,55 @@ public class MapActivity extends FragmentActivity implements LocationListener, O
 		inAT.add(lis);
 		
 	}
+	private String gres;
 	public void getinAT() {
 		
-		add(0);
-		add(1);
+		String[] tmp = gres.split("&");
+		for(int i = 0; i < tmp.length; i++) {
+			Log.d("tmptmptmp", tmp[i]);
+		}
+		for(int i = 0; i < tmp.length; i++) {
+
+			List<LatLng> lis = new ArrayList<LatLng>();
+			List<Integer> idx = new ArrayList<Integer>();
+			
+			int x = 0;
+			for(int j = 0; j < tmp[i].length(); j++) {
+				if(tmp[i].charAt(j) == ',') {
+					if(x != 0) {
+						idx.add(x);
+						lis.add(new LatLng(Lat[x - 1], Lng[x - 1]));
+						Log.d("hehe", ""+x);
+					}
+					x = 0;
+				} else {
+					x = x * 10 + (tmp[i].charAt(j) - '0');
+				}
+			}
+			if(x != 0) {
+				idx.add(new Integer(x));
+				lis.add(new LatLng(Lat[x - 1], Lng[x - 1]));
+			}
+			String ss = "";
+			for(int j = 0; j < idx.size(); j++) {
+				ss += ""+ idx.get(j);
+				
+			}
+			Log.d("S", ss);
+			inAT.add(lis);
+			inid.add(idx);
+			
+		}
+		for(int i = 0; i < inid.size(); i++) {
+			for(int j = 0; j < inid.get(i).size(); j++) {
+				Log.d("??????????????????", inid.get(i).get(j) + "");
+			}
+		}
+		Log.d("---------------------", ""+inAT.size());
+		
+//		add(0);
+//		add(1);
+		
 	}
 	protected void onCreate(Bundle savedInstanceState) {
 		Log.d("ppp", "sss");
@@ -194,6 +285,12 @@ public class MapActivity extends FragmentActivity implements LocationListener, O
 		init();
 		nextroad  = (ImageButton)findViewById(R.id.nextroad);
 		nextroad.setImageResource(R.drawable.next);
+		
+		
+		Intent intent = this.getIntent();
+		Bundle bd = intent.getExtras();
+		gres = bd.getString("spot");
+		Log.d("GRESSSSgfeafeafeafeafea", gres);
 		
 		
 		getinAT();		//latlngAll.add(new LatLng(39.99, 116.39));
@@ -260,7 +357,7 @@ public class MapActivity extends FragmentActivity implements LocationListener, O
 	}
 	public boolean onCreateOptionsMenu(Menu menu) {
 		menu.add(0, Menu.FIRST + 1, 1, "下一条路线");
-		menu.add(0, Menu.FIRST + 2, 2, "线路详情");
+		menu.add(0, Menu.FIRST + 2, 2, "返回");
 		return true;
 	}
 
@@ -279,8 +376,8 @@ public class MapActivity extends FragmentActivity implements LocationListener, O
 			break;
 		case Menu.FIRST + 2:
 			//locationManager.removeUpdates(llistener);
-			this.finish();
-
+			finish();
+			break;
 		}
 		return true;
 	}
@@ -292,8 +389,12 @@ public class MapActivity extends FragmentActivity implements LocationListener, O
 			list.clear();
 			Glist.clear();
 			latlngAll.clear();
+			idAll.clear();
+			
 			for(int i = 0; i < inAT.get(nowch).size(); i++) {
 				latlngAll.add(inAT.get(nowch).get(i));
+				idAll.add(inid.get(nowch).get(i));
+				
 			}
 
 			Log.d("SIZE", ""+nowch+","+inAT.size()+","+latlngAll.size());
@@ -414,12 +515,12 @@ public class MapActivity extends FragmentActivity implements LocationListener, O
 		
 	}
 
-	public void addMaker(double l1, double l2, boolean move) {
+	public void addMaker(double l1, double l2, String name, boolean move) {
 		
 		LatLng lates = new LatLng(l1, l2);
    
 		//marklist.add(gmap.addMarker(new MarkerOptions().position(lates).title("Hello world").snippet("娆㈤ギ鏉ュ仛澶у疂鍋").icon(BitmapDescriptorFactory.fromResource(R.drawable.ww))));
-		marklist.add(gmap.addMarker(new MarkerOptions().position(lates).title("Hello world").snippet("娆㈤ギ鏉ュ仛澶у疂鍋")));
+		marklist.add(gmap.addMarker(new MarkerOptions().position(lates).title(name).snippet("欢迎光临")));
 
 		if(move) {
 			gmap.moveCamera(CameraUpdateFactory.newLatLng(lates));
@@ -480,13 +581,13 @@ public class MapActivity extends FragmentActivity implements LocationListener, O
 
 		for(int i = 0; i < marklist.size(); i++) {
 			if(marker.equals(marklist.get(i))) {
-				Toast.makeText(getBaseContext(), "Click Info Window Of ~ " + i, Toast.LENGTH_SHORT).show();
+				//Toast.makeText(getBaseContext(), "Click id ~ " + idAll.get(i) , Toast.LENGTH_SHORT).show();
 				
-//				Intent it = new Intent(MapActivity.this, DetailActivity.class);
-//				Bundle bundle=new Bundle();
-//				bundle.putString("name", "This is from MainActivity!");
-//				it.putExtras(bundle);       // it.putExtra(“test”, "shuju”);
-//				startActivity(it);
+				Intent it = new Intent(MapActivity.this, InfoActivity.class);
+				Bundle bundle=new Bundle();
+				bundle.putString("idx", ""+ idAll.get(i));
+				it.putExtras(bundle);
+				startActivity(it);
 //				
 				break;
 			}

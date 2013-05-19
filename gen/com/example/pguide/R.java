@@ -195,55 +195,72 @@ containing a value of this type.
         public static final int common_signin_btn_text_pressed_dark=0x7f02001f;
         public static final int common_signin_btn_text_pressed_light=0x7f020020;
         public static final int gotbtn=0x7f020021;
-        public static final int ic_launcher=0x7f020022;
-        public static final int makebtn=0x7f020023;
-        public static final int next=0x7f020024;
+        public static final int greatwall=0x7f020022;
+        public static final int head=0x7f020023;
+        public static final int ic_launcher=0x7f020024;
+        public static final int makebtn=0x7f020025;
+        public static final int next=0x7f020026;
     }
     public static final class id {
-        public static final int CityList=0x7f060008;
-        public static final int CitySel=0x7f06000c;
-        public static final int CitySelTitle=0x7f06000b;
-        public static final int DurationEdit=0x7f06000e;
-        public static final int DurationTitle=0x7f06000d;
-        public static final int Ilike=0x7f060017;
-        public static final int PreferTitle=0x7f06000f;
-        public static final int ResultTitle=0x7f060007;
-        public static final int SearchBtn=0x7f060005;
-        public static final int SearchText=0x7f060006;
-        public static final int action_settings=0x7f06001e;
-        public static final int cbox=0x7f06001d;
-        public static final int gotbtn=0x7f060015;
-        public static final int head=0x7f06001a;
-        public static final int hname=0x7f06001b;
-        public static final int hsc=0x7f06001c;
-        public static final int hsspot=0x7f060013;
-        public static final int htspot=0x7f060011;
+        public static final int CityList=0x7f060015;
+        public static final int CitySel=0x7f060019;
+        public static final int CitySelTitle=0x7f060018;
+        public static final int DurationEdit=0x7f06001b;
+        public static final int DurationTitle=0x7f06001a;
+        public static final int Ilike=0x7f060024;
+        public static final int PreferTitle=0x7f06001c;
+        public static final int ResultTitle=0x7f060014;
+        public static final int SearchBtn=0x7f060012;
+        public static final int SearchText=0x7f060013;
+        public static final int action_settings=0x7f06002b;
+        public static final int cbox=0x7f06002a;
+        public static final int gotbtn=0x7f060022;
+        public static final int h1=0x7f06000a;
+        public static final int h2=0x7f060009;
+        public static final int h3=0x7f06000b;
+        public static final int head=0x7f060027;
+        public static final int hname=0x7f060028;
+        public static final int hsc=0x7f060029;
+        public static final int hsspot=0x7f060020;
+        public static final int htspot=0x7f06001e;
         public static final int hybrid=0x7f060004;
-        public static final int likeHead=0x7f060016;
-        public static final int lpspot=0x7f060012;
-        public static final int makebtn=0x7f060018;
-        public static final int map=0x7f060009;
-        public static final int nextroad=0x7f06000a;
+        public static final int imageView1=0x7f06000c;
+        public static final int indoc=0x7f060008;
+        public static final int likeHead=0x7f060023;
+        public static final int lpspot=0x7f06001f;
+        public static final int makebtn=0x7f060025;
+        public static final int map=0x7f060016;
+        public static final int nextroad=0x7f060017;
         public static final int none=0x7f060000;
         public static final int normal=0x7f060001;
-        public static final int rqspot=0x7f060010;
+        public static final int pinglun1=0x7f06000f;
+        public static final int pinglun2=0x7f060010;
+        public static final int pinglun3=0x7f060011;
+        public static final int ratingbar=0x7f060007;
+        public static final int rqspot=0x7f06001d;
         public static final int satellite=0x7f060002;
-        public static final int spotList=0x7f060019;
+        public static final int spotList=0x7f060026;
+        public static final int spotname=0x7f060005;
         public static final int terrain=0x7f060003;
-        public static final int znspot=0x7f060014;
+        public static final int tickp=0x7f06000e;
+        public static final int weap=0x7f060006;
+        public static final int weather=0x7f06000d;
+        public static final int znspot=0x7f060021;
     }
     public static final class layout {
-        public static final int activity_main=0x7f030000;
-        public static final int activity_map=0x7f030001;
-        public static final int activity_pref=0x7f030002;
-        public static final int activity_usersel=0x7f030003;
-        public static final int activity_wel=0x7f030004;
-        public static final int vlist=0x7f030005;
+        public static final int activity_info=0x7f030000;
+        public static final int activity_main=0x7f030001;
+        public static final int activity_map=0x7f030002;
+        public static final int activity_pref=0x7f030003;
+        public static final int activity_usersel=0x7f030004;
+        public static final int activity_wel=0x7f030005;
+        public static final int vlist=0x7f030006;
     }
     public static final class menu {
-        public static final int main=0x7f0b0000;
-        public static final int map=0x7f0b0001;
-        public static final int user_sel=0x7f0b0002;
+        public static final int info=0x7f0b0000;
+        public static final int main=0x7f0b0001;
+        public static final int map=0x7f0b0002;
+        public static final int user_sel=0x7f0b0003;
     }
     public static final class string {
         public static final int CityHint=0x7f070019;
@@ -345,30 +362,32 @@ containing a value of this type.
         public static final int location_client_ulr_inactive_age_under_13=0x7f070012;
         public static final int location_client_ulr_inactive_age_unknown=0x7f070013;
         public static final int location_client_ulr_inactive_unknown_restriction=0x7f070014;
+        public static final int longtex=0x7f070034;
         public static final int lpspot=0x7f07002a;
-        public static final int pref_default_display_name=0x7f070037;
-        public static final int pref_description_social_recommendations=0x7f070035;
+        public static final int pref_default_display_name=0x7f070039;
+        public static final int pref_description_social_recommendations=0x7f070037;
         /**  Example settings for Data & Sync 
          */
-        public static final int pref_header_data_sync=0x7f070039;
+        public static final int pref_header_data_sync=0x7f07003b;
         /**  Strings related to Settings 
  Example General settings 
          */
-        public static final int pref_header_general=0x7f070033;
+        public static final int pref_header_general=0x7f070035;
         /**  Example settings for Notifications 
          */
-        public static final int pref_header_notifications=0x7f07003c;
-        public static final int pref_ringtone_silent=0x7f07003f;
-        public static final int pref_title_add_friends_to_messages=0x7f070038;
-        public static final int pref_title_display_name=0x7f070036;
-        public static final int pref_title_new_message_notifications=0x7f07003d;
-        public static final int pref_title_ringtone=0x7f07003e;
-        public static final int pref_title_social_recommendations=0x7f070034;
-        public static final int pref_title_sync_frequency=0x7f07003a;
-        public static final int pref_title_system_sync_settings=0x7f07003b;
-        public static final int pref_title_vibrate=0x7f070040;
+        public static final int pref_header_notifications=0x7f07003e;
+        public static final int pref_ringtone_silent=0x7f070041;
+        public static final int pref_title_add_friends_to_messages=0x7f07003a;
+        public static final int pref_title_display_name=0x7f070038;
+        public static final int pref_title_new_message_notifications=0x7f07003f;
+        public static final int pref_title_ringtone=0x7f070040;
+        public static final int pref_title_social_recommendations=0x7f070036;
+        public static final int pref_title_sync_frequency=0x7f07003c;
+        public static final int pref_title_system_sync_settings=0x7f07003d;
+        public static final int pref_title_vibrate=0x7f070042;
         public static final int prefer=0x7f070027;
         public static final int rqspot=0x7f070028;
+        public static final int title_activity_info=0x7f070033;
         public static final int title_activity_map=0x7f07002d;
         public static final int title_activity_user_sel=0x7f070030;
         public static final int znspot=0x7f07002c;

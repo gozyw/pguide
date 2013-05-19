@@ -39,7 +39,7 @@ public class PreferencesActivity extends Activity {
 			switch(msg.what) {
 				case 0:
 					progressdialog.dismiss();
-					//MakeToast("Get info failed");
+					MakeToast("Get info failed");
 					break;
 				case 1:
 					progressdialog.dismiss();

@@ -26,9 +26,14 @@
     <string name="hsspot">好口碑</string>
     <string name="znspot">猜测我的喜好(undo)</string>
     <string name="title_activity_map">MapActivity</string>
-    <string name="IP">192.168.23.11</string>
+    <string name="IP">192.168.22.10</string>
     <string name="PO">6000</string>
     <string name="title_activity_user_sel">UserSel</string>
 	<string name="guessyoulike">Maybe you like</string>
 	<string name="Ilike">I like</string>
+	<string name="znspot">猜测我的喜好(undo)</string>
+    <string name="title_activity_map">MapActivity</string>
+    <string name="title_activity_info">InfoActivity</string>
+    <string name="longtex">"    很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长"</string>
+	
 </resources>

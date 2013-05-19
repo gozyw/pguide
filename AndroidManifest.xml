@@ -35,6 +35,11 @@
         <activity
             android:name="com.example.pguide.PreferencesActivity"
             android:label="@string/Preferences_head" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name="com.example.pguide.MapActivity"
@@ -50,11 +55,6 @@
             android:name="com.example.pguide.WelActivity"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Holo.NoActionBar" >
-           <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <uses-library android:name="com.google.android.maps" />
@@ -62,6 +62,13 @@
         <activity
             android:name="com.example.pguide.UserSelActivity"
             android:label="@string/title_activity_user_sel" >
+            
+        </activity>
+        <activity
+            android:name="com.example.pguide.InfoActivity"
+            android:label="@string/title_activity_info" >
+            
+            
             
         </activity>
     </application>
