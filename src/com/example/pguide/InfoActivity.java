@@ -194,6 +194,7 @@ LazyScrollView.OnScrollListener{
 	private ImageView imageView1;
 	
 	private TextView spotname, tickp, weather, indoc;
+	private TextView pinglun1, pinglun2, pinglun3;
 
 	private String serverip;
 	private int serverport;
@@ -221,6 +222,28 @@ LazyScrollView.OnScrollListener{
 				ratingbar.setRating((float)(da/db));
 				
 				tickp.setText("ÃÅÆ±:    " + str[4]+"Ôª");
+				
+				
+				if ( str[9].length() >= 20 )
+				{
+					pinglun1 .setText(str[9].substring(0, 20) + "..." );
+				} else {
+					pinglun1 .setText(str[9]);
+				}
+				if ( str[10].length() >= 20 )
+				{
+					pinglun2 .setText(str[10].substring(0, 20) + "..." );
+				} else {
+					pinglun2 .setText(str[10]);
+				}
+				if ( str[11].length() >= 20 )
+				{
+					pinglun3 .setText(str[11].substring(0, 20) + "..." );
+				} else {
+					pinglun3 .setText(str[11]);
+				}
+				//pinglun2 .setText(str[10]);
+				//pinglun3 .setText(str[11]);
 				
 				break;
 			default:
@@ -257,8 +280,8 @@ LazyScrollView.OnScrollListener{
 	}
 	private String[] gao(String str)
 	{
-		String res[] = new String[9];
-		for ( int i = 0; i<9;i++ )
+		String res[] = new String[12];
+		for ( int i = 0; i<12;i++ )
 		{
 			int ats = str.indexOf('&');
 			res[i] = str.substring(0, ats);
@@ -286,6 +309,9 @@ LazyScrollView.OnScrollListener{
 		indoc = (TextView)findViewById(R.id.indoc);
 		imageView1 = (ImageView)findViewById(R.id.imageView1);
 		ratingbar = (RatingBar) findViewById(R.id.ratingbar);
+		pinglun1 = (TextView)findViewById(R.id.pinglun1);
+		pinglun2 = (TextView)findViewById(R.id.pinglun2);
+		pinglun3 = (TextView)findViewById(R.id.pinglun3);
 		
 		
 		
